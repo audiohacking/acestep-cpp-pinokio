@@ -1,0 +1,22 @@
+{
+  "links": [
+    {
+      "title": "AceStep.cpp UI by audiohacking",
+      "links": [
+        {
+          "title": "Github (UI)",
+          "value": "https://github.com/audiohacking/acestep-cpp-ui"
+        },
+        {
+          "title": "Github (Engine)",
+          "value": "https://github.com/audiohacking/acestep.cpp"
+        }
+      ]
+    }
+  ],
+  "title": "AceStep.cpp UI",
+  "description": "Native C++ AI music generation — no Python required",
+  "plugin": {
+    "menu": []
+  }
+}
