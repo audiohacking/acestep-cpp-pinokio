@@ -13,7 +13,7 @@ module.exports = {
       when: "{{platform === 'darwin'}}",
       method: "shell.run",
       params: {
-        path: "app",
+        path: "app/bin",
         message: "curl -L https://github.com/audiohacking/acestep.cpp/releases/download/v0.0.1/acestep-macos-arm64-metal.tar.gz | tar xz"
       }
     },
@@ -22,7 +22,7 @@ module.exports = {
       when: "{{platform === 'linux' && arch === 'x64'}}",
       method: "shell.run",
       params: {
-        path: "app",
+        path: "app/bin",
         message: "curl -L https://github.com/audiohacking/acestep.cpp/releases/download/v0.0.1/acestep-linux-x64.tar.gz | tar xz"
       }
     },
