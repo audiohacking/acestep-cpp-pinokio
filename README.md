@@ -2,7 +2,7 @@
 
 # AceStep.cpp UI
 
-Native C++ AI music generation via [acestep-cpp-ui](https://github.com/audiohacking/acestep-cpp-ui), powered by the [acestep.cpp](https://github.com/audiohacking/acestep.cpp) GGUF-native inference engine. No Python required.
+Native C++ AI music generation powered by the [acestep.cpp](https://github.com/audiohacking/acestep.cpp) GGUF-native inference engine
 
 ## Features
 
