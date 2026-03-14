@@ -16,7 +16,7 @@ module.exports = {
         message: "conda install -y -c conda-forge cmake"
       }
     },
-    // Build from source using build.sh (macOS)
+    // Build from source using build.sh (macOS - handles clone + GPU auto-detection + build)
     {
       when: "{{platform === 'darwin'}}",
       method: "shell.run",
@@ -25,13 +25,21 @@ module.exports = {
         message: "bash build.sh"
       }
     },
-    // Download pre-built binaries for Linux x64 (CUDA/Vulkan auto-detected at runtime)
+    // Install cmake and Vulkan headers via conda for Linux x64
     {
       when: "{{platform === 'linux' && arch === 'x64'}}",
       method: "shell.run",
       params: {
-        path: "app/bin",
-        message: "curl -L https://github.com/audiohacking/acestep.cpp/releases/download/v0.0.1/acestep-linux-x64.tar.gz | tar xz"
+        message: "conda install -y -c conda-forge cmake vulkan-headers"
+      }
+    },
+    // Build from source using build.sh (Linux - handles clone + GPU auto-detection + build)
+    {
+      when: "{{platform === 'linux' && arch === 'x64'}}",
+      method: "shell.run",
+      params: {
+        path: "app",
+        message: "bash build.sh"
       }
     },
     // Windows: build from source (no pre-built binary available yet)
