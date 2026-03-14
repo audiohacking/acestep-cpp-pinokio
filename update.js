@@ -15,22 +15,31 @@ module.exports = {
         message: "git pull"
       }
     },
-    // Re-download latest pre-built binaries for macOS
+    // Pull acestep.cpp updates and rebuild (macOS)
+    {
+      method: "shell.run",
+      params: {
+        path: "app/acestep.cpp",
+        message: "git pull && git submodule update --init --recursive"
+      }
+    },
     {
       when: "{{platform === 'darwin'}}",
       method: "shell.run",
       params: {
         path: "app",
-        message: "curl -L https://github.com/audiohacking/acestep.cpp/releases/download/v0.0.1/acestep-macos-arm64-metal.tar.gz | tar xz"
+        message: "bash build.sh"
       }
     },
-    // Re-download latest pre-built binaries for Linux x64
     {
       when: "{{platform === 'linux' && arch === 'x64'}}",
       method: "shell.run",
       params: {
         path: "app",
-        message: "curl -L https://github.com/audiohacking/acestep.cpp/releases/download/v0.0.1/acestep-linux-x64.tar.gz | tar xz"
+        env: {
+          VULKAN_SDK: "{{envs.CONDA_PREFIX}}"
+        },
+        message: "bash build.sh"
       }
     },
     // Update npm dependencies
