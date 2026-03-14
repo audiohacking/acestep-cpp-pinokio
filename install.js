@@ -8,13 +8,21 @@ module.exports = {
         message: "git clone https://github.com/audiohacking/acestep-cpp-ui app"
       }
     },
-    // Download pre-built binaries for macOS Apple Silicon (Metal/MPS)
+    // Install cmake via conda for macOS build
     {
       when: "{{platform === 'darwin'}}",
       method: "shell.run",
       params: {
-        path: "app/bin",
-        message: "curl -L https://github.com/audiohacking/acestep.cpp/releases/download/v0.0.1/acestep-macos-arm64-metal.tar.gz | tar xz"
+        message: "conda install -y -c conda-forge cmake"
+      }
+    },
+    // Build from source using build.sh (macOS)
+    {
+      when: "{{platform === 'darwin'}}",
+      method: "shell.run",
+      params: {
+        path: "app",
+        message: "bash build.sh"
       }
     },
     // Download pre-built binaries for Linux x64 (CUDA/Vulkan auto-detected at runtime)
